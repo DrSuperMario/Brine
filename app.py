@@ -49,7 +49,7 @@ def result():
         
         elif request.form['submit_button'] == 'Search ticker':
 
-            pressed = read.find_data_by_ticker(request.form.get('search_field'))
+            pressed = read.find_data_by_ticker(str(request.form.get('search_field')).upper())
             return render_template('result.html', pressed=pressed)
 
             
