@@ -2,15 +2,15 @@
 {%block content%}
 <div class="home">
      <form action="/result" method="POST">
+          <input type="submit" name='submit_button' value="Get Group Data">
+          <input type="submit" name='submit_button' value="Get All Data"><br><br>
           <input type="radio" class="form-radio" id="Stock" name="market" value="stock">
           <label for="stock">Stock</label>
           <input type="radio" class="form-radio" id="Crypto" name="market" value="crypto">
           <label for="Crypto">Crypto</label>
           <input type="radio" class="form-radio"  id="Forex" name="market" value="forex">
           <label for="Forex">Forex</label><br><br>
-          <input type="submit" name='submit_button' value="Get Data by Id">
-          <input type="submit" name='submit_button' value="Get Group Data">
-          <input type="submit" name='submit_button' value="Get All Data"><br><br>
+          <input type="submit" name='submit_button' value="Get Data by Id"><br><br>
 
           <input type="text" id='search_field' name='search_field' ><br><br>
           <input type="submit" name='submit_button' value="Search ticker">
