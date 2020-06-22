@@ -31,6 +31,22 @@ def result():
 
             pressed = read.get_group_data()
             return render_template('result.html', pressed=pressed)
+
+        elif request.form['submit_button'] == 'Get Data by Id' and request.form['market'] == 'stock':
+
+            pressed = read.find_data_by_group(1)
+            return render_template('result.html', pressed=pressed)
+
+        elif request.form['submit_button'] == 'Get Data by Id' and request.form['market'] == 'crypto':
+
+            pressed = read.find_data_by_group(2)
+            return render_template('result.html', pressed=pressed)
+        
+        elif request.form['submit_button'] == 'Get Data by Id' and request.form['market'] == 'forex':
+
+            pressed = read.find_data_by_group(3)
+            return render_template('result.html', pressed=pressed)
+
             
     
 
