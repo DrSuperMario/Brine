@@ -46,6 +46,11 @@ def result():
 
             pressed = read.find_data_by_group(3)
             return render_template('result.html', pressed=pressed)
+        
+        elif request.form['submit_button'] == 'Search ticker':
+
+            pressed = read.find_data_by_ticker(request.form.get('search_field'))
+            return render_template('result.html', pressed=pressed)
 
             
     

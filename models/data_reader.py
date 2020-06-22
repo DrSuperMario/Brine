@@ -20,6 +20,12 @@ def find_data_by_group(market_id):
     get_groups = get_groups.get_group(market_id)
 
     return get_groups.to_html()
+
+def find_data_by_ticker(ticker):
+
+    ticker_data = df.loc[df['signal_name'] == ticker]
+
+    return ticker_data.to_html()
     
 
 if __name__=="__main__":
