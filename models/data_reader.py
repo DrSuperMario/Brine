@@ -1,6 +1,7 @@
 import pandas as pd
 from models.connect import connect_to_database as cnc
 
+
 df = cnc()
 
 def get_all_data(): 
@@ -29,4 +30,4 @@ def find_data_by_ticker(ticker):
     
 
 if __name__=="__main__":
-    print(get_group_data())
+    get_all_data()
