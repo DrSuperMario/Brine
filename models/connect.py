@@ -5,6 +5,7 @@ from pandas import json_normalize as jsn
 import time
 
 
+url_to_API = 'http://64.225.65.21/markets'
 
 def connect_to_database():
     
@@ -15,7 +16,7 @@ def connect_to_database():
         try:
             
             time.sleep(1)
-            data = requests.get("http://64.225.65.21/markets")
+            data = requests.get(url_to_API)
             
             if data != None:
                 jsonify = data.json()
@@ -29,7 +30,7 @@ def connect_to_database():
         except:
             
             time.sleep(1)
-            print('Connection not made')
+            print(f'Connection not made to : {url_to_API}')
 
 
 
