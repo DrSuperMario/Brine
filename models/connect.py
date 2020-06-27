@@ -20,8 +20,8 @@ def connect_to_database():
             if data != None:
                 jsonify = data.json()
                 df = pd.concat([jsn(jsonify['markets'][x]['Signals']) for x in range(len(jsonify['markets']))])   
-                df = df.set_index(pd.to_datetime(df['date'])).sort_index(ascending=True)
-                df.index = df.index.to_series().apply(lambda x: dt.strftime(x, '%H.%M.%S - %m.%d.%Y'))
+                df = df.set_index(pd.to_datetime(df['date'])).sort_index(ascending=False)
+                df.index = df.index.to_series().apply(lambda x: dt.strftime(x, '%H:%M:%S - %m.%d.%Y'))
                 df = df.drop('date', axis=1)
                 end_connect
                 return df

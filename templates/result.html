@@ -1,12 +1,12 @@
 {%extends "layout.html"%}
 {%block content%}
-
 {{ pressed|safe}}<br>
 <input type="button" onclick="goBack()" value="Go Back" name="back_button">
 <script>
     function goBack() {
         window.history.back();
     }
+
 </script>
 
 

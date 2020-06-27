@@ -1,83 +1,137 @@
 body {
-  background-color: #222222;;
+  background-color: #222222;
+  padding: 0;
+  font-family: 'Fredericka the Great';
+  text-align: center;
 }
 
-input[type=text] {
-  width: 20%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
+.container {
+  width: 420px;
+  padding-top: 80px;
+  margin: 0 auto;
+  background-color: #222222;
+}
+
+form {
+  display: inline-block;
+}
+
+input[type=text]{
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+   border-radius: 20px;
+   border: 1px solid #f1f1f1;
+   color: #666;
+   width: 80%;
+   height: 30px;
+   padding-left: 10px;
+  }
+  
+input[type=text]:focus {
+   outline: none;
+   border: 1px solid #f1f1f1;
+   color: #666;
 }
 
 
 input[type="submit"] {
     padding: 10px 20px 11px !important;
     font-size: 21px !important;
-    background-color: #F36C8C;
+    background-color: #9900FF;
     font-weight: bold;
-    text-shadow: 1px 1px #F36C8C;
+    text-shadow: 1px 1px #9900FF;
     color: #ffffff;
     border-radius: 100px;
     -moz-border-radius: 100px;
     -webkit-border-radius: 100px;
-    border: 1px solid #F36C8C;
+    border: 1px solid #9900FF;
     cursor: pointer;
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
     -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
     -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+
   }
 
-  .form-radio
-  {
-       -webkit-appearance: none;
-       -moz-appearance: none;
-       appearance: none;
-       display: inline-block;
-       position: relative;
-       background-color: #f1f1f1;
-       color: #666;
-       top: 10px;
-       height: 30px;
-       width: 30px;
-       border: 0;
-       border-radius: 50px;
-       cursor: pointer;     
-       margin-right: 7px;
-       outline: none;
+input[type="button"] {
+    padding: 10px 20px 11px !important;
+    font-size: 21px !important;
+    background-color: #9900FF;
+    font-weight: bold;
+    text-shadow: 1px 1px #9900FF;
+    color: #ffffff;
+    border-radius: 100px;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    border: 1px solid #9900FF;
+    cursor: pointer;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+
   }
-  .form-radio:checked::before
-  {
-       position: absolute;
-       font: 13px/1 'Open Sans', sans-serif;
-       left: 11px;
-       top: 7px;
-       content: '\02143';
-       transform: rotate(40deg);
-  }
-  .form-radio:hover
-  {
-       background-color: #f7f7f7;
-  }
-  .form-radio:checked
-  {
-       background-color: #f1f1f1;
-  }
+
+.form-radio
+{
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      display: inline-block;
+      position: relative;
+      background-color: #f1f1f1;
+      color: #666;
+      top: 10px;
+      height: 30px;
+      width: 30px;
+      border: 0;
+      border-radius: 50px;
+      cursor: pointer;     
+      margin-right: 7px;
+      outline: none;
+}
+.form-radio:checked::before
+{
+      position: absolute;
+      font: 13px/1 'Open Sans', sans-serif;
+      left: 11px;
+      top: 7px;
+      content: '\02143';
+      transform: rotate(40deg);
+}
+.form-radio:hover
+{
+      background-color: #f7f7f7;
+}
+.form-radio:checked
+{
+      background-color: #f1f1f1;
+}
 
 h1 {
   color: #f1f1f1;
   font: 'Open Sans', sans-serif;
+  text-align: center;
+  padding-top: 100px;
 }
 
-label
-  {
-       font: 15px/1.7 'Open Sans', sans-serif;
+label {
        color: #f1f1f1;
        -webkit-font-smoothing: antialiased;
        -moz-osx-font-smoothing: grayscale;
        cursor: pointer;
   } 
 table {
+    font-family: Arial;
     border-collapse: collapse;
-    border: 2px solid white;
-    color: thistle;
+    width: 100%;
+    background-color: #f1f1f1;
+
+  }
+
+th, td {
+    padding: 0.25rem;
+    text-align: left;
+    border: 1px solid #ccc;
+  }
+tbody tr:hover {
+    background: yellow;
   }
