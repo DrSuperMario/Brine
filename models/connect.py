@@ -15,7 +15,7 @@ def connect_to_database():
         try:
             
             time.sleep(1)
-            data = requests.get("http://127.0.0.1:5000/markets")
+            data = requests.get("http://64.225.65.21/markets")
             
             if data != None:
                 jsonify = data.json()
