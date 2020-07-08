@@ -5,7 +5,7 @@ from pandas import json_normalize as jsn
 import time
 
 
-url_to_API = 'http://64.225.65.21/markets'
+url_to_API = 'http://46.101.204.81:5000/markets'
 
 def connect_to_database():
     
