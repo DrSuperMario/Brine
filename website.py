@@ -47,11 +47,15 @@ def result():
             pressed = find_data_by_ticker(str(request.form.get('search_field')).upper())
             return render_template('result.html', pressed=pressed)
 
-                
-    
+@app.route('/login', methods=['POST','GET'])
+def user_login():
 
+    if request.method == 'POST':
+        if request.form['submit_button'] == 'Login':
+            pass
+    return render_template('login.html')
 
 
 if __name__=="__main__":
-    app.run(port=5050)
+    app.run(debug=True, port=5050)
    

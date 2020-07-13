@@ -32,6 +32,9 @@ def connect_to_database():
             time.sleep(1)
             print(f'Connection not made to : {url_to_API}')
 
+def login_to_api():
+    pass
+
 
 
 if __name__=="__main__":
