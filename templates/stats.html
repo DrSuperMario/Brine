@@ -2,8 +2,7 @@
 {%block content%}
 <form method="post">
     {{ form.hidden_tag() }}
-    {{ form.all_data }}<br><br>
-    {{ form.search_field}}<br><br>
-    {{ form.search_field_button }}
+    {{ form.user_stats }}
+    {{ form.room_stats }}
 </form>
 {%endblock%}
