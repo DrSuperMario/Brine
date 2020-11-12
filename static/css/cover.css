@@ -22,12 +22,19 @@ a:hover {
 
 /*
  * Base structure
+ *
+ *   #3A6073 - Dark greenish blue
+ *   #4776E6 - Liht soft blue
+ *   #085078 - Electric blue , darker
+ *   #1FA2FF - Stripe . light blue
+ *   #56B4D3 - Emerald water , light blue
+ *   #26a0da - Nimvelo , medium blue
  */
 
 html,
 body {
   height: 100%;
-  background-color: #3A6073;
+  background-color:  #1FA2FF;
 }
 
 body {
