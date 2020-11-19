@@ -1,0 +1,57 @@
+<table border="0" class="table table-sm">
+  <tbody class="small-text">
+    <tr>
+      <th>03:41PM</th>
+      <td>UPDATE 8-U.S. lifts Boeing 737 MAX flight ban after crash probes, tough hurdles remain</td>
+    </tr>
+    <tr>
+      <th>03:31PM</th>
+      <td>FOREX-U.S. dollar weakens for 5th day on vaccine optimism</td>
+    </tr>
+    <tr>
+      <th>03:31PM</th>
+      <td>UPDATE 6-Canada's Intact, Denmark's Tryg agree to buy British insurer RSA for $9.6 bln</td>
+    </tr>
+    <tr>
+      <th>03:21PM</th>
+      <td>CANADA FX DEBT-C$ notches 1-week high as investors bet on faster vaccine rollout</td>
+    </tr>
+    <tr>
+      <th>03:19PM</th>
+      <td>TREASURIES-Yields rise on vaccine optimism, after weak 20-year auction</td>
+    </tr>
+    <tr>
+      <th>10:53AM</th>
+      <td>UPDATE 1-Norwegian Air seeks bankruptcy protection under Irish law</td>
+    </tr>
+    <tr>
+      <th>03:10PM</th>
+      <td>China’s Role in U.S. Bond Market Shrinks With Other Foreigners</td>
+    </tr>
+    <tr>
+      <th>03:10PM</th>
+      <td>Pizza Hut becomes first pizza company to offer meat substitutes to its menu</td>
+    </tr>
+    <tr>
+      <th>03:06PM</th>
+      <td>Stocks Slip as Investors Weigh Vaccines, Virus Restrictions</td>
+    </tr>
+    <tr>
+      <th>02:59PM</th>
+      <td>Fed's Barkin: ending emergency lending facilities poses risks</td>
+    </tr>
+    <tr>
+      <th>02:46PM</th>
+      <td>Stocks mostly lower as tug of war continues between vaccine optimism and rising COVID-19 cases</td>
+    </tr>
+    <tr>
+      <th>02:46PM</th>
+      <td>EMERGING MARKETS-Latam assets gain on vaccine news; Peru's sol, Chilean peso lead</td>
+    </tr>
+   
+    <tr>
+      <th>10:53AM</th>
+      <td>UPDATE 1-Norwegian Air seeks bankruptcy protection under Irish law</td>
+    </tr>
+  </tbody>
+</table>
