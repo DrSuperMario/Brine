@@ -34,15 +34,16 @@
 <body>
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
-      <a class="navbar-brand-new" href="#">Brine.Cloud</a>
+      <a class="navbar-brand-new" href="#">Brine.Cloud<small class="text-muted">Open-source fintech </small>
+      </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
   
-      <div class="collapse navbar-collapse" id="navbarsExample09">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      <div class="collapse navbar-collapse pl-5" id="navbarsExample09">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" href="#"> Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">News</a>
@@ -56,11 +57,8 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Forex</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Signals</a>
-          </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Links</a>
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More</a>
             <div class="dropdown-menu" aria-labelledby="dropdown09">
               <a class="dropdown-item" href="#">Action</a>
               <a class="dropdown-item" href="#">Another action</a>
@@ -68,7 +66,7 @@
             </div>
           </li>
         </ul>
-        <form class="form-inline my-2 my-md-0">
+        <form class="form-inline my-2 my-md-0 pl-5">
           <input class="form-control" type="text" placeholder="Search Ticker...." aria-label="Search">
         </form>
       </div>
@@ -78,11 +76,9 @@
         <div class="row align-items-start"> 
             <div class="col-6">
                   {{ pressed|safe}}
-                <a class="btn-secondary align-content-start" href="../components/navbar/" role="button">Load more... &raquo;</a>
-              </p>
             </div>
             <div class="col-6">
-              {{ pressed|safe}}
+              {{ crypt_list|safe}}
             </div>
         </div> 
       </div>
