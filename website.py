@@ -15,6 +15,7 @@ conn = ConnectAndManage()
 @app.route('/', methods=['GET', 'POST'])
 def home():
 
+    """
     form = SignalForm()
 
     if form.validate_on_submit():
@@ -25,8 +26,11 @@ def home():
             session['search_field'] = form.search_field.data
             pressed = find_data_by_ticker(session['search_field'])
             return render_template('result.html', pressed = pressed)
-
-    return render_template('home.html', form=form)
+    """
+    with open('test.txt' ,'r') as r:
+        pressed = r.read()
+    print(pressed)    
+    return render_template('home.html', pressed=pressed)
 
 
 if __name__=="__main__":
