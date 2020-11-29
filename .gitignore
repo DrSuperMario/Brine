@@ -2,3 +2,5 @@ venv/
 __pycache__/
 templates/test.html
 
+.ipynb_checkpoints/test-checkpoint.ipynb
+test.ipynb
