@@ -32,17 +32,33 @@ def home():
     with open('crypt_list.txt','r') as f:
         crypt_list = f.read()
 
-    pressed = json_to_dataframe(apiloc='127.0.0.1:5000', location='newslist', json_key='news')
+    pressed = json_to_dataframe(list_name='newslist')
+    crypt_list = json_to_dataframe(list_name='cryptolist')
 
-    pressed.set_index(pressed['creationDate'], inplace=True)
-    df=pressed.drop(['newsArticleWWW', 
-            'articleDate', 
-            'newsPolarityNeg', 
-            'newsPolarityPos', 
-            'newsPolarityNeu', 
-            'creationDate',
-            'newsArticleId'], axis=1)
-    pressed = df[:14].to_html()
+    crypt_list.set_index(crypt_list['cryptoName'], inplace=True)
+    crypt_list = crypt_list.drop(labels=['cryptoName','cryptoDate','cryptoId', 'cryptoCreationDate'], axis=1)
+    crypt_list.columns = ['Price','PriceCap','Volume','Circulation']
+    crypt_list = crypt_list[:12].to_html(render_links=True, 
+                                        escape=False, 
+                                        header=True,
+                                        bold_rows=True,
+                                        border=0,
+                                        justify="left",
+                                        index_names=False,
+                                        classes=['table table-sm','small-text'])
+
+    def article_to_www(articles):
+        for i in range(len(articles)):
+            yield f"<a href=\"{articles['newsArticleWWW'][i]}\">{articles['newsArticle'][i]}</a>"
+    
+    df = pd.DataFrame(article_to_www(pressed),index=pressed['creationDate'], columns=['newsArticle'])
+    pressed = df[:12].to_html(render_links=True, 
+                                     escape=False, 
+                                     header=False,
+                                     bold_rows=True,
+                                     border=0,
+                                     index_names=False,
+                                     classes=['table table-sm','small-text'])
 
     return render_template('home.html', pressed=pressed, crypt_list=crypt_list)
 
