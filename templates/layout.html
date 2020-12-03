@@ -43,19 +43,19 @@
       <div class="collapse navbar-collapse pl-5" id="navbarsExample09">
         <ul class="nav nav-tabs">
           <li class="nav-item">
-            <a class="nav-link active" href="#"> Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link {{ "active" if home else ""}}" href="/"> Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">News</a>
+            <a class="nav-link {{ "active" if news else ""}}" href="/news">News</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Stock</a>
+            <a class="nav-link {{ "active" if stock else ""}}" href="/stock">Stock</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Crypto</a>
+            <a class="nav-link {{ "active" if crypto else ""}}" href="/crypto">Crypto</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Forex</a>
+            <a class="nav-link {{ "active" if forex else ""}}" href="/forex">Forex</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More</a>
