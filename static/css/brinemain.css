@@ -1,6 +1,13 @@
 body {
   padding-top: 2rem;
 }
+
+#plotly {
+  margin: auto;
+  width: 85%;
+  padding: 10px;
+}
+
 .bottom-container-area {
   padding: 3rem 1.5rem;
   text-align: center;

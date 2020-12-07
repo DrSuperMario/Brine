@@ -1,6 +1,7 @@
-from flask import Flask, render_template, session, redirect, url_for
+from flask import Flask, render_template, session, redirect, url_for, request
 
-#from forms import SignalForm
+from forms import SignalForm
+from models.search import search_ticker
 
 from apirequests import news_request, crypto_request
 import models.plotly as mlpt
@@ -10,22 +11,14 @@ app.config['SECRET_KEY'] = "14cxTre7gHHou"
 app.config['DEBUG'] = True
 
 
-
 @app.route('/', methods=['GET', 'POST'])
 def home():
 
-    """
-    form = SignalForm()
+    form = SignalForm(request.form)
 
-    if form.validate_on_submit():
-        if form.all_data.data:
-            passed = get_all_data()
-            return render_template('result.html', pressed=passed)
-        elif form.search_field_button.data:
-            session['search_field'] = form.search_field.data
-            pressed = find_data_by_ticker(session['search_field'])
-            return render_template('result.html', pressed = pressed)
-    """
+    if request.method == 'POST':
+        search = search_ticker(form.search_field.data)
+        return render_template('search.html', form=search)
 
     return render_template('home.html', home=True, pressed = news_request(article_count=13), crypt_list = crypto_request())
 
