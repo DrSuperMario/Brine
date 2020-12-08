@@ -3,7 +3,7 @@ from flask import Flask, render_template, session, redirect, url_for, request
 from forms import SignalForm
 from models.search import search_ticker
 
-from apirequests import news_request, crypto_request
+from apirequests import news_request, crypto_request, forex_request
 import models.plotly as mlpt
 
 
@@ -26,7 +26,7 @@ class Web(Flask):
         if request.method == 'POST':
             return render_template('search.html', form=Web.search())
 
-        return render_template('home.html', home=True, pressed = news_request(article_count=13), crypt_list = crypto_request())
+        return render_template('home.html', home=True, pressed = news_request(article_count=14), crypt_list = crypto_request())
 
     @app.route('/news', methods=['GET','POST'])
     def news():
@@ -50,7 +50,7 @@ class Web(Flask):
         if request.method == 'POST':
             return render_template('search.html', form=Web.search())
 
-        return render_template('forex.html', forex=True)
+        return render_template('forex.html', forex_list = forex_request(), forex=True)
 
     @app.route('/stock', methods=['GET','POST'])
     def stock():

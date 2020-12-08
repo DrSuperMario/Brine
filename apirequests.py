@@ -1,16 +1,51 @@
 import pandas as pd
 from pandas import json_normalize as jsn
 
+import os
+
 import requests as req
 
+
+def save_data_to_json(data, source):
+
+    if(os.path.exists(f'temp\{source}.json')):
+        if(os.stat(f'temp\{source}.json').st_size > 2):
+            os.remove(f'temp\{source}.json')
+
+    data.to_json(f"temp/{source}.json")
     
+
+
+
 def json_to_dataframe(apiloc="127.0.0.1:5000",list_name="cryptolist"):
-    payload = req.get(f"http://{apiloc}/{list_name}").json()
-    return jsn(payload,('news' if list_name=="newslist" else 'Crypto'))   
+
+    def list_name_check(list_name):
+
+        if(list_name=="newslist"): return "news"
+        elif(list_name=="cryptolist"): return "Crypto"
+        elif(list_name=="forexlist"): return "forex"
+        else: return "Error no List specified use (cryptolist , forexlist or newslist"
+    
+    try:    
+
+        payload = req.get(f"http://{apiloc}/{list_name}").json()
+
+        if(len(str(payload)) == 12):
+            return pd.read_json(f"temp/{list_name_check(list_name)}.json")
+        
+        return jsn(payload,list_name_check(list_name))
+        
+
+    except:
+
+        return pd.read_json(f"temp/{list_name_check(list_name)}.json")
+
 
 def news_request(article_count=12, stream_sentiment_data=False):
-
+    
     pressed = json_to_dataframe(list_name='newslist')
+
+    save_data_to_json(pressed, source="news")
 
     def article_to_www(articles):
         for i in range(len(articles)):
@@ -37,7 +72,7 @@ def news_request(article_count=12, stream_sentiment_data=False):
                                         classes=['table table-sm','small-text'])
 
     else:   
-                                                                                           
+
         df = pd.DataFrame(article_to_www(pressed),index=pressed['creationDate'], columns=['newsArticle'])
     
         pressed = df[:article_count].to_html(render_links=True, 
@@ -51,9 +86,11 @@ def news_request(article_count=12, stream_sentiment_data=False):
     return pressed
 
 
-def crypto_request(index_count=12):
+def crypto_request(index_count=13):
 
     crypt_list = json_to_dataframe(list_name='cryptolist')
+
+    save_data_to_json(crypt_list, source="Crypto")
 
     crypt_list.set_index(crypt_list['cryptoName'], inplace=True)
     crypt_list = crypt_list.drop(labels=['cryptoName','cryptoDate','cryptoId', 'cryptoCreationDate'], axis=1)
@@ -68,6 +105,26 @@ def crypto_request(index_count=12):
                                         classes=['table table-sm','small-text'])
 
     return crypt_list
+
+def forex_request():
+
+    forex_list = json_to_dataframe(list_name='forexlist')
+
+    save_data_to_json(forex_list, source="forex")
+
+    forex_list.set_index(forex_list['forexTag'], inplace=True)
+    forex_list = forex_list.drop(labels=['forexTag', 'forexId', 'forexDate'], axis=1)
+    forex_list.columns = ['Name', 'Change', 'High', 'Bid', 'Low', 'Open']
+    forex_list = forex_list.to_html(render_links=True, 
+                                        escape=False, 
+                                        header=True,
+                                        bold_rows=True,
+                                        border=0,
+                                        justify="left",
+                                        index_names=False,
+                                        classes=['table table-sm','small-text'])
+    return forex_list
+
 
 def main():
     pass
