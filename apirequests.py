@@ -14,7 +14,7 @@ def save_data_to_json(data, source):
 
 
 
-def json_to_dataframe(apiloc="127.0.0.1:5000",list_name="cryptolist"):
+def json_to_dataframe(apiloc="brinenewsapi.herokuapp.com",list_name="cryptolist"):
 
     def list_name_check(list_name):
 
