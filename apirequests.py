@@ -7,9 +7,7 @@ import requests as req
 
 
 def save_data_to_json(data, source):
-
-    if(os.path.exists(f'temp\{source}.json')):
-        data.to_json(f"temp/{source}.json")
+    data.to_json(f"temp/{source}.json")
     
 
 
