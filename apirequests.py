@@ -7,7 +7,7 @@ import requests as req
 
 
 def save_data_to_json(data, source):
-    data.to_json(f"temp/{source}.json")
+    data.to_json(f"temp\{source}.json")
     
 
 
@@ -26,14 +26,14 @@ def json_to_dataframe(apiloc="brinenewsapi.herokuapp.com",list_name="cryptolist"
         payload = req.get(f"http://{apiloc}/{list_name}").json()
 
         if(len(str(payload)) <  12):
-            return pd.read_json(f"temp/{list_name_check(list_name)}.json")
+            return pd.read_json(f"temp\{list_name_check(list_name)}.json")
         
         return jsn(payload,list_name_check(list_name))
         
 
     except req.exceptions.ConnectionError:
         #breakpoint()
-        return pd.read_json(f"temp/{list_name_check(list_name)}.json")
+        return pd.read_json(f"temp\{list_name_check(list_name)}.json")
 
 
 def news_request(article_count=12, stream_sentiment_data=False):
