@@ -1,1 +1,1 @@
-web: gunicorn temp:Web
+web: gunicorn website:app
