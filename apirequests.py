@@ -9,10 +9,7 @@ import requests as req
 def save_data_to_json(data, source):
 
     if(os.path.exists(f'temp\{source}.json')):
-        if(os.stat(f'temp\{source}.json').st_size > 2):
-            os.remove(f'temp\{source}.json')
-
-    data.to_json(f"temp/{source}.json")
+        data.to_json(f"temp/{source}.json")
     
 
 
@@ -30,14 +27,14 @@ def json_to_dataframe(apiloc="127.0.0.1:5000",list_name="cryptolist"):
 
         payload = req.get(f"http://{apiloc}/{list_name}").json()
 
-        if(len(str(payload)) == 12):
+        if(len(str(payload)) <  12):
             return pd.read_json(f"temp/{list_name_check(list_name)}.json")
         
         return jsn(payload,list_name_check(list_name))
         
 
-    except:
-
+    except req.exceptions.ConnectionError:
+        #breakpoint()
         return pd.read_json(f"temp/{list_name_check(list_name)}.json")
 
 
