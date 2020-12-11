@@ -1,15 +1,17 @@
 import pandas as pd
 from pandas import json_normalize as jsn
 
-import os
+#import os
 
 import requests as req
 
 
 def save_data_to_json(data, source):
-    data.to_json(f"temp\{source}.json")
-    
+    #check if data is there or empty then it would not ovserwrite full file
+    if(len(str(data)) <= 15 or len(str(data)) > 50):
+        data.to_json(f"temp/{source}.json")
 
+    return None
 
 
 def json_to_dataframe(apiloc="brinenewsapi.herokuapp.com",list_name="cryptolist"):
@@ -24,16 +26,16 @@ def json_to_dataframe(apiloc="brinenewsapi.herokuapp.com",list_name="cryptolist"
     try:    
 
         payload = req.get(f"http://{apiloc}/{list_name}").json()
-
-        if(len(str(payload)) <  12):
-            return pd.read_json(f"temp\{list_name_check(list_name)}.json")
+        print(len(str(payload)))
+        if(len(str(payload)) <=  15):
+            return pd.read_json(f"temp/{list_name_check(list_name)}.json")
         
         return jsn(payload,list_name_check(list_name))
         
 
     except req.exceptions.ConnectionError:
         #breakpoint()
-        return pd.read_json(f"temp\{list_name_check(list_name)}.json")
+        return pd.read_json(f"temp/{list_name_check(list_name)}.json")
 
 
 def news_request(article_count=12, stream_sentiment_data=False):
@@ -43,8 +45,14 @@ def news_request(article_count=12, stream_sentiment_data=False):
     save_data_to_json(pressed, source="news")
 
     def article_to_www(articles):
+
+        def shorten_link(link, lenght):
+            if(len(link) > lenght):
+                return link[:lenght] + "...."
+            return link
+
         for i in range(len(articles)):
-            yield f"<a href=\"{articles['newsArticleWWW'][i]}\">{articles['newsArticle'][i]}</a>"
+            yield f"<a href=\"{articles['newsArticleWWW'][i]}\" target=\"_blank\" title=\"{articles['newsArticle'][i]}\">{shorten_link(articles['newsArticle'][i], lenght=80)}</a>"
 
     if(stream_sentiment_data):
 
