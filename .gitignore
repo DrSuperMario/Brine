@@ -5,3 +5,5 @@ templates/test.html
 .ipynb_checkpoints/test-checkpoint.ipynb
 test.ipynb
 testim.html
+temp/Crypto.json
+temp/news.json

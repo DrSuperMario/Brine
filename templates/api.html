@@ -1,0 +1,73 @@
+{%extends "layout.html"%}
+{%block content%}
+
+<main role="main" class="container">
+
+    <div class="d-flex flex-column align-items-center">
+        <div class="p-2 align-items-center">
+        <h2>API usage and information</h2>
+        </div>
+        <div class="p-2">
+        <p class="lead">
+            API is located at <a href="https://brinenews.herokuapp.com">https://brinenews.herokuapp.com</a> <br><br>
+            To get JSON formatted <b>NEWS</b> - <a href="https://brinenews.herokuapp.com/newslist">https://brinenews.herokuapp.com/newslist</a><br>
+            Get data in linux : <kbd>curl -l http://brinenewsapi.herokuapp.com/newslist</kbd><br>
+            Get data with python: <br>
+            <pre>
+            <code>
+
+                import requests
+
+                data = requests.get("http://brinenewsapi.herokuapp.com/newslist")
+
+                print(data.content)
+
+            </code>
+        </pre>
+         </div>
+         <div class="p-2">
+            To get JSON formatted <b>CRYPTO</b> - <a href="https://brinenews.herokuapp.com/cryptolist">https://brinenews.herokuapp.com/cryptolist</a><br><br>
+            et data in linux : <kbd>curl -l http://brinenewsapi.herokuapp.com/cryptolist</kbd><br>
+            Get data with python: <br>
+            <pre>
+            <code>
+
+                import requests
+
+                data = requests.get("http://brinenewsapi.herokuapp.com/cryptolist")
+
+                print(data.content)
+
+            </code>
+        </pre>
+        </div>
+        <div class="p-2">
+            To get JSON formatted <b>FOREX</b> - <a href="https://brinenews.herokuapp.com/forex">https://brinenews.herokuapp.com/forexlist</a><br><br>
+            et data in linux : <kbd>curl -l http://brinenewsapi.herokuapp.com/forexlist</kbd><br>
+            Get data with python: <br>
+            <pre>
+            <code>
+
+                import requests
+
+                data = requests.get("http://brinenewsapi.herokuapp.com/forexlist")
+
+                print(data.content)
+
+            </code>
+        </pre>
+        </div>
+            <b>API data is updated every 5 seconds</b>
+        </p>
+    </div>
+
+    <div class="bottom-container-area">
+    <h1>Here comes the News and Signals</h1>
+    <p class="lead">Lorem, ipsum dolor sit amet consectetur adipisicing elit. <br>
+      Culpa vero ipsa ullam optio veritatis, quae est, minus ab molestiae doloremque <br>
+      modi dolore laboriosam error impedit omnis fuga. Rerum, aperiam corporis!.<.</p>
+    </div>
+    
+  </main>
+
+{%endblock%}

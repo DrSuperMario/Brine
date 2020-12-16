@@ -60,6 +60,22 @@ def stock():
 
     return render_template('stock.html', chart_data=mlpt.plot_data_to_html(), stock=True)
 
+@app.route('/api', methods=['GET','POST'])
+def api():
+
+    if request.method == 'POST':
+        return render_template('search.html', form=search())
+
+    return render_template('api.html')
+
+@app.route('/about', methods=['GET','POST'])
+def about():
+
+    if request.method == 'POST':
+        return render_template('search.html', form=search())
+
+    return render_template('about.html')
+
 
 if __name__=="__main__":
     app.run(port=5050)
