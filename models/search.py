@@ -1,20 +1,21 @@
 from datetime import datetime
 from dateutil import parser
 
-import pandas as pd
 import pandas_datareader as pdr
 
 
 
-def search_ticker(ticker, search_start, search_field_end, download_button):
+def search_ticker(ticker, search_start, search_field_end):
 
     if ticker:
         
         try:
-            
+            global df
+            global stock
+
             df = pdr.DataReader(ticker.upper(), 'yahoo', 
-            start=(parser.parse(search_start) if search_start else datetime(2020,11,11)), 
-            end=(parser.parse(search_field_end) if search_field_end else datetime.now()))
+                                start=(parser.parse(search_start) if search_start else datetime(2020,11,11)), 
+                                end=(parser.parse(search_field_end) if search_field_end else datetime.now()))
             stock = df.to_html(render_links=True, 
                                 escape=False, 
                                 header=True,
@@ -23,10 +24,8 @@ def search_ticker(ticker, search_start, search_field_end, download_button):
                                 border=0,
                                 index_names=False,
                                 classes=['table table-sm','small-text'])
-            if download_button:
-                print("Hwlllooo oasdas sa da \n\n\n")
+            df.to_csv('static/temp/temp.csv')
 
-            return stock
             
         except pdr._utils.RemoteDataError:
             return """
@@ -41,8 +40,10 @@ def search_ticker(ticker, search_start, search_field_end, download_button):
             <div class="center-text">
                 <h1 class="lead">Ticker Not found</h1> 
             </div>    
-            """
-    return False
+            """       
+
+    return stock 
+
 
         
     

@@ -15,7 +15,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = "14cxTre7gHHou"
 app.config['DEBUG'] = True
 
-def search_data(search_start="", search_end="" ):
+def search_data(search_start="", search_end=""):
 
     form = SignalForm(request.form)
     search_field_start = request.form.get('search_field_start')
@@ -24,13 +24,14 @@ def search_data(search_start="", search_end="" ):
     return search_ticker(form.search_field.data, 
                         search_start=("" if search_start is None else search_field_start), 
                         search_field_end=("" if search_end is None else search_field_end),
-                        download_button=(False if request.form.get('download_button') else True))
+                        )
 
 @app.route('/search', methods=['GET','POST']) 
 def search():
 
     if request.method == 'POST':
         search_field = request.form.get('search_field')
+
         return render_template('search.html',
                             date=datetime.now(), 
                             form=search_data(),
