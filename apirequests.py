@@ -21,7 +21,8 @@ def json_to_dataframe(apiloc="brinenewsapi.herokuapp.com",list_name="cryptolist"
         if(list_name=="newslist"): return "news"
         elif(list_name=="cryptolist"): return "Crypto"
         elif(list_name=="forexlist"): return "forex"
-        else: return "Error no List specified use (cryptolist , forexlist or newslist"
+        elif(list_name=="stocklist"): return "stock"
+        else: return "Error no List specified use (cryptolist , forexlist, newslist, stocklist)"
     
     try:    
 
@@ -127,6 +128,26 @@ def forex_request():
                                         index_names=False,
                                         classes=['table table-sm','small-text'])
     return forex_list
+
+def stock_request():
+
+    stock_list = json_to_dataframe(list_name='stocklist')
+
+    save_data_to_json(stock_list, source="stock")
+
+    stock_list.set_index(stock_list['stockName'], inplace=True)
+    stock_list = stock_list.drop(labels=['stockName','stockId', 'stockCreationDate'], axis=1)
+
+    stock_list.columns = ['Low', 'Last', 'High', 'Change', 'Change%']
+    stock_list = stock_list.to_html(render_links=True, 
+                                        escape=False, 
+                                        header=True,
+                                        bold_rows=True,
+                                        border=0,
+                                        justify="left",
+                                        index_names=False,
+                                        classes=['table table-sm','small-text'])
+    return stock_list
 
 
 def main():

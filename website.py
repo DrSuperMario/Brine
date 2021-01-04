@@ -1,14 +1,15 @@
+from re import IGNORECASE
 from flask import Flask, render_template, session, redirect, url_for, request
 from datetime import datetime
+from dateutil import parser
 
 from forms import SignalForm
 from models.search import search_ticker
 
-from apirequests import news_request, crypto_request, forex_request
-import models.plotly as mlpt
+from apirequests import news_request, crypto_request, forex_request, stock_request
+from models.plotly import MakePlots
 
-
-
+MP = MakePlots()
 
 
 app = Flask(__name__)
@@ -20,8 +21,13 @@ def search_data(search_start="", search_end=""):
     form = SignalForm(request.form)
     search_field_start = request.form.get('search_field_start')
     search_field_end = request.form.get('search_field_end')
+    plot = MP.make_single_plot(ticker_name=str(
+                                               request.form.get('search_field')).upper(),
+                                               start_t=(parser.parse(search_field_start) if search_start else datetime(2020,11,11)),
+                                               end_t=(parser.parse(search_field_end) if search_field_end else datetime.now())
+            )
    
-    return search_ticker(form.search_field.data, 
+    return plot,search_ticker(form.search_field.data, 
                         search_start=("" if search_start is None else search_field_start), 
                         search_field_end=("" if search_end is None else search_field_end),
                         )
@@ -31,11 +37,12 @@ def search():
 
     if request.method == 'POST':
         search_field = request.form.get('search_field')
-
+        plot, form = search_data()
         return render_template('search.html',
-                            date=datetime.now(), 
-                            form=search_data(),
-                            search_field = search_field)
+                                date=datetime.now(), 
+                                form=form,
+                                plot=plot,
+                                search_field = search_field)
 
     return render_template('search.html')
 
@@ -43,7 +50,8 @@ def search():
 def home():
 
     if request.method == 'POST':
-        return render_template('search.html',date=datetime.now(), form=search_data())
+        plot, form = search_data()
+        return render_template('search.html',date=datetime.now(),form=form, plot=plot)
 
     return render_template('home.html', home=True, pressed = news_request(article_count=14), crypt_list = crypto_request())
 
@@ -51,7 +59,8 @@ def home():
 def news():
 
     if request.method == 'POST':
-        return render_template('search.html',date=datetime.now(), form=search_data())
+        plot, form = search_data()
+        return render_template('search.html',date=datetime.now(),form=form, plot=plot)
 
     return render_template('news.html',news_list=news_request(article_count=89, stream_sentiment_data=True),news=True)
 
@@ -59,7 +68,8 @@ def news():
 def crypto():
 
     if request.method == 'POST':
-        return render_template('search.html',date=datetime.now(), form=search_data())
+        plot, form = search_data()
+        return render_template('search.html',date=datetime.now(),form=form, plot=plot)
 
     return render_template('crypto.html',crypto_list=crypto_request(index_count=89),crypto=True)
 
@@ -67,7 +77,8 @@ def crypto():
 def forex():
 
     if request.method == 'POST':
-        return render_template('search.html',date=datetime.now(), form=search_data())
+        plot, form = search_data()
+        return render_template('search.html',date=datetime.now(),form=form, plot=plot)
 
     return render_template('forex.html', forex_list = forex_request(), forex=True)
 
@@ -75,15 +86,17 @@ def forex():
 def stock():
 
     if request.method == 'POST':
-        return render_template('search.html', form=search_data())
+        plot, form = search_data()
+        return render_template('search.html',date=datetime.now(),form=form, plot=plot)
 
-    return render_template('stock.html', chart_data=mlpt.plot_data_to_html(), stock=True)
+    return render_template('stock.html', chart_data=stock_request(), stock=True)
 
 @app.route('/api', methods=['GET','POST'])
 def api():
 
     if request.method == 'POST':
-        return render_template('search.html',date=datetime.now(), form=search_data())
+        plot, form = search_data()
+        return render_template('search.html',date=datetime.now(),form=form, plot=plot)
 
     return render_template('api.html')
 
@@ -91,7 +104,8 @@ def api():
 def about():
 
     if request.method == 'POST':
-        return render_template('search.html',date=datetime.now(), form=search_data())
+        plot, form = search_data()
+        return render_template('search.html',date=datetime.now(),form=form, plot=plot)
 
     return render_template('about.html')
 

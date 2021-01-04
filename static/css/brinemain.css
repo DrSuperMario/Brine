@@ -3,8 +3,11 @@ body {
 }
 
 #plotly {
-  margin: auto;
-  width: 85%;
+  align-content: flex-start;
+  padding: 10px;
+}
+#dataframe {
+  align-content: flex-end;
   padding: 10px;
 }
 

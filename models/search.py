@@ -41,8 +41,7 @@ def search_ticker(ticker, search_start, search_field_end):
                 <h1 class="lead">Ticker Not found</h1> 
             </div>    
             """       
-
-    return stock 
+    return stock
 
 
         
