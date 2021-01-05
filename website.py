@@ -1,4 +1,3 @@
-from re import IGNORECASE
 from flask import Flask, render_template, session, redirect, url_for, request
 from datetime import datetime
 from dateutil import parser
@@ -20,12 +19,14 @@ def search_data(search_start="", search_end=""):
 
     form = SignalForm(request.form)
     search_field_start = request.form.get('search_field_start')
-    search_field_end = request.form.get('search_field_end')
+    search_field_end = request.form.get('search_field_end') 
+
     plot = MP.make_single_plot(ticker_name=str(
                                                request.form.get('search_field')).upper(),
-                                               start_t=(parser.parse(search_field_start) if search_start else datetime(2020,11,11)),
-                                               end_t=(parser.parse(search_field_end) if search_field_end else datetime.now())
-            )
+                                               start_t=(datetime(2020,11,11) if search_start == "" else parser.parse(search_field_start)),
+                                               end_t=(datetime.now() if search_end == "" else parser.parse(search_field_end))
+            )    
+        
    
     return plot,search_ticker(form.search_field.data, 
                         search_start=("" if search_start is None else search_field_start), 
