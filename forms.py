@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, RadioField, SubmitField, TextField, DateField
+from wtforms import StringField, SubmitField, DateField
 
 
 class SignalForm(FlaskForm):

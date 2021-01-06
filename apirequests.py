@@ -69,7 +69,7 @@ def news_request(article_count=12, stream_sentiment_data=False):
         pressed = df[:article_count].to_html(render_links=True, 
                                         escape=False, 
                                         header=True,
-                                        justify='left',
+                                        justify='right',
                                         bold_rows=True,
                                         border=0,
                                         index_names=False,
@@ -104,7 +104,7 @@ def crypto_request(index_count=13):
                                         header=True,
                                         bold_rows=True,
                                         border=0,
-                                        justify="left",
+                                        justify="right",
                                         index_names=False,
                                         classes=['table table-sm','small-text'])
 
@@ -124,7 +124,7 @@ def forex_request():
                                         header=True,
                                         bold_rows=True,
                                         border=0,
-                                        justify="left",
+                                        justify="right",
                                         index_names=False,
                                         classes=['table table-sm','small-text'])
     return forex_list
@@ -144,7 +144,7 @@ def stock_request():
                                         header=True,
                                         bold_rows=True,
                                         border=0,
-                                        justify="left",
+                                        justify="right",
                                         index_names=False,
                                         classes=['table table-sm','small-text'])
     return stock_list

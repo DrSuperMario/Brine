@@ -21,13 +21,14 @@ def search_data(search_start="", search_end=""):
     search_field_start = request.form.get('search_field_start')
     search_field_end = request.form.get('search_field_end') 
 
+
     plot = MP.make_single_plot(ticker_name=str(
                                                request.form.get('search_field')).upper(),
-                                               start_t=(datetime(2020,11,11) if search_start == "" else parser.parse(search_field_start)),
-                                               end_t=(datetime.now() if search_end == "" else parser.parse(search_field_end))
+                                               start_t=(parser.parse(search_field_start) if isinstance(search_field_start,str) else datetime(2020,11,11)),
+                                               end_t=(parser.parse(search_field_end) if isinstance(search_field_start,str) else datetime.now())
             )    
         
-   
+    #breakpoint()
     return plot,search_ticker(form.search_field.data, 
                         search_start=("" if search_start is None else search_field_start), 
                         search_field_end=("" if search_end is None else search_field_end),

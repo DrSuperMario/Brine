@@ -19,7 +19,7 @@ def search_ticker(ticker, search_start, search_field_end):
             stock = df.to_html(render_links=True, 
                                 escape=False, 
                                 header=True,
-                                justify='left',
+                                justify='right',
                                 bold_rows=True,
                                 border=0,
                                 index_names=False,

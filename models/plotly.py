@@ -5,17 +5,13 @@ import matplotlib.pyplot as plt
 import mplfinance as mpf
 
 import mpld3
-import pandas as pd
 import pandas_datareader as pdr
-
-
-start = datetime(2020,11,11)
-end = datetime.now()
 
 
 class MakePlots():
     
     def search_ticker(ticker_to_search, time_start, time_end):
+        #breakpoint()
         try:
             data = pdr.DataReader(ticker_to_search, 'yahoo', start=time_start, end=time_end) 
             
@@ -76,6 +72,7 @@ class MakePlots():
         if(isinstance(data_to_plot,str)):
             return None       
 
+        #breakpoint()
         mpf.figure()
         fig, axs= plt.subplots(figsize=(12,3))
         #axs = axs.flatten()
