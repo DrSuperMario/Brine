@@ -13,8 +13,8 @@
     <div class="d-flex flex-column align-items-start">
         <form method="POST" class="form-inline my-2 my-md-0 pl-5">
             <input id="search_field" name="search_field" class="form-control" type="text" placeholder="Ticker" aria-label="Search">
-            <input id="search_field_start" name="search_field_start" class="form-control" type="date" value="{{ date }}" min="2019-01-01" max="{{ date }}" placeholder="Start date..." aria-label="Start date..">
-            <input id="search_field_end" name="search_field_end" class="form-control" type="date" value="{{ date }}" min="2019-01-01" max="{{ date }}" placeholder="end date..." aria-label="end date..">
+            <input id="search_field_start" name="search_field_start" class="form-control" type="date" value="{% if date_f %}{{ date_f }}{% else %}2020-11-11{% endif %}" min="2019-01-01" max="{{ date_e }}" placeholder="Start date..." aria-label="Start date.." required     pattern="\d{4}-\d{2}-\d{2}">
+            <input id="search_field_end" name="search_field_end" class="form-control" type="date" value="{% if date_e %}{{ date_e }}{% endif %}" min="2019-01-01" max="{{ date_e }}" placeholder="end date..." aria-label="end date.." required pattern="\d{4}-\d{2}-\d{2}">
             <input id="search_ticker_button" type="submit" name="search_button" class="btn btn-dark" value="Search...">
           </form>
     </div>
@@ -33,20 +33,26 @@
             <h2> {{search_field}}</h2>
         {% endif %}
     </div>
-    <div class="d-flex flex-column align-items-start">
-        <form method="POST" class="form-inline my-2 my-md-0 pl-5">
-            <input id="download_button" onclick="window.open('static/temp/temp.csv');" name="download_button" class="btn btn-dark" type="submit" placeholder="Downlaod data as CSV" value="Downlaod data as CSV">
-        </form>
-      
-    </div>    
+    {% if download_button_s %}
+        <div class="d-flex flex-column align-items-start">
+            <form method="POST" class="form-inline my-2 my-md-0 pl-5">
+                <input id="download_button" name="download_button" class="btn btn-dark" type="submit" placeholder="Downlaod data as CSV" value="Downlaod data as CSV">
+            </form>
         
-    <div class="bottom-container-area">
-        <h1>Here comes the News and Signals</h1>
-        <p class="lead">Lorem, ipsum dolor sit amet consectetur adipisicing elit. <br>
-        Culpa vero ipsa ullam optio veritatis, quae est, minus ab molestiae doloremque <br>
-        modi dolore laboriosam error impedit omnis fuga. Rerum, aperiam corporis!.<.</p>
-    </div>
-    
+        </div>   
+
+    {% endif %} 
+    {% if info %}
+        <div class="bottom-container-area">
+            <h1>Ticker Description:</h1>
+            <p class="lead">{{info | safe}}</p>
+        </div>
+    {% else %}
+        <div class="bottom-container-area">
+            <h1>Search a ticker and get an answer....</h1>
+        </div>
+    {% endif %}
+
 </main>
 
 {%endblock%}
