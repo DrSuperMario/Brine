@@ -33,7 +33,7 @@ class SearchData():
                                     bold_rows=True,
                                     border=0,
                                     index_names=False,
-                                    classes=['table table-sm','small-text'])
+                                    classes=['text-align: right;','table table-sm','small-text'])
 
                 if(os.path.exists('static/temp/temp.csv')):
                     os.remove('static/temp/temp.csv')

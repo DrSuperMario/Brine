@@ -3,9 +3,9 @@ body {
 }
 
 
-td {
+td{
   text-align: right;
-}
+} 
 
 #plotly {
   align-content: flex-start;

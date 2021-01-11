@@ -133,6 +133,10 @@ def about():
 
     return render_template('about.html')
 
+@app.route('/signals', methods=['GET','POST'])
+def signals():
+    return render_template('signals.html')
+
 
 if __name__=="__main__":
     app.run()

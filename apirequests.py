@@ -73,7 +73,7 @@ def news_request(article_count=12, stream_sentiment_data=False):
                                         bold_rows=True,
                                         border=0,
                                         index_names=False,
-                                        classes=['table table-sm','small-text'])
+                                        classes=['table table-sm','small-text td-left'])
 
     else:   
 

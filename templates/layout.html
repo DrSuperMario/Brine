@@ -75,14 +75,16 @@
     </nav>
     <main role="main">
       <div class="jumbotron jumbotron-fluid p-0 pt-3">
-        <div class="row align-items-start"> 
-            <div class="col-6">
-                  {{ pressed|safe}}
-            </div>
-            <div class="col-6">
-              {{ crypt_list|safe}}
-            </div>
-        </div> 
+        <div class="table-responsive">
+          <div class="row align-items-start"> 
+              <div class="col-6">
+                    {{ pressed|safe}}
+              </div>
+              <div class="col-6">
+                {{ crypt_list|safe}}
+              </div>
+          </div> 
+        </div>
       </div>
     </main>
   </div>
