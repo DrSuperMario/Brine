@@ -9,7 +9,7 @@ import requests as req
 def save_data_to_json(data, source):
     #check if data is there or empty then it would not ovserwrite full file
     if(len(str(data)) <= 15 or len(str(data)) > 50):
-        data.to_json(f"temp/{source}.json")
+        data.to_json(f"static/temp/{source}.json", orient='records')
 
     return None
 
