@@ -71,7 +71,7 @@ def search():
     return render_template('search.html')
 
 @app.route('/', methods=['GET', 'POST'])
-def home():
+def home(): 
 
     if request.method == 'POST':
         plot, form, info = search_data()
