@@ -29,14 +29,14 @@ def json_to_dataframe(apiloc="brinenewsapi.herokuapp.com",list_name="cryptolist"
         payload = req.get(f"http://{apiloc}/{list_name}").json()
         print(len(str(payload)))
         if(len(str(payload)) <=  15):
-            return pd.read_json(f"temp/{list_name_check(list_name)}.json")
+            return pd.read_json(f"static/temp/{list_name_check(list_name)}.json")
         
         return jsn(payload,list_name_check(list_name))
         
 
     except req.exceptions.ConnectionError:
         #breakpoint()
-        return pd.read_json(f"temp/{list_name_check(list_name)}.json")
+        return pd.read_json(f"static/temp/{list_name_check(list_name)}.json")
 
 
 def news_request(article_count=12, stream_sentiment_data=False):
