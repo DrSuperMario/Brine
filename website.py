@@ -1,11 +1,25 @@
-from flask import Flask, render_template, session, redirect, url_for, request, send_file
+from flask import (
+                    Flask, 
+                    render_template, 
+                    session, 
+                    redirect, 
+                    url_for, 
+                    request, 
+                    send_file
+)
+
 from datetime import datetime
 from dateutil import parser
 
 from forms import SignalForm
 from models.search import SearchData
 
-from apirequests import news_request, crypto_request, forex_request, stock_request
+from apirequests import (
+                         news_request, 
+                         crypto_request, 
+                         forex_request, 
+                         stock_request
+)    
 from models.plotly import MakePlots
 
 MP = MakePlots()
