@@ -11,7 +11,7 @@
         </div>
     </div>
     <div class="d-flex flex-column align-items-start">
-        <form method="POST" class="form-inline my-2 my-md-0 pl-5">
+        <form method="POST" class="form-inline mx-auto my-2 my-md-0 pl-5">
             <input id="search_field" name="search_field" class="form-control" type="text" placeholder="Ticker" aria-label="Search">
             <input id="search_field_start" name="search_field_start" class="form-control" type="date" value="{% if date_f %}{{ date_f }}{% else %}2020-11-11{% endif %}" min="2019-01-01" max="{{ date_e }}" placeholder="Start date..." aria-label="Start date.." required     pattern="\d{4}-\d{2}-\d{2}">
             <input id="search_field_end" name="search_field_end" class="form-control" type="date" value="{% if date_e %}{{ date_e }}{% endif %}" min="2019-01-01" max="{{ date_e }}" placeholder="end date..." aria-label="end date.." required pattern="\d{4}-\d{2}-\d{2}">
@@ -36,7 +36,7 @@
     {% if download_button_s %}
         <div class="d-flex flex-column align-items-start">
             <form method="POST" class="form-inline my-2 my-md-0 pl-5">
-                <input id="download_button" name="download_button" class="btn btn-dark" type="submit" placeholder="Downlaod data as CSV" value="Downlaod data as CSV">
+                <input id="download_button" name="download_button" class="btn btn-dark" type="submit" placeholder="Download data as CSV" value="Download data as CSV">
             </form>
         
         </div>   

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <link href="../static/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/brinemain.css" rel="stylesheet">
+    <title>Brine.Cloud</title>
+    <style>
+        .bd-placeholder-img {
+          font-size: 1.125rem;
+          text-anchor: middle;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+      
+        @media (min-width: 768px) {
+          .bd-placeholder-img-lg {  
+            font-size: 3.5rem;
+          }
+        }
+      </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-light rounded">
+            <a class="navbar-brand-new" href="/">Brine.Cloud<small class="text-muted">Open-source fin-tech</small>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#layoutNavBar" aria-controls="layoutNavBar" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse pl-5" id="layoutNavBar">
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link {{ "active" if home else ""}}" href="/"> Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link {{ "active" if news else ""}}" href="/news">News</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link {{ "active" if stock else ""}}" href="/stock">Stock</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link {{ "active" if crypto else ""}}" href="/crypto">Crypto</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link {{ "active" if forex else ""}}" href="/forex">Forex</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More</a>
+                  <div class="dropdown-menu" aria-labelledby="dropdown09">
+                    <a class="dropdown-item" href="/api">API usage</a>
+                    <a class="dropdown-item" href="/search">Search</a>
+                    <a class="dropdown-item" href="/about">About</a>
+                  </div>
+                </li>
+              </ul>
+              <form method="POST" class="form-inline my-2 my-md-0 pl-5">
+                <input id="search_field" name="search_field" class="form-control" type="text" placeholder="Search Ticker...." aria-label="Search">
+              </form>
+            </div>
+        </nav>
+            {% block content %}
+            {% endblock %}
+    </div>
+
+    <footer>
+        <div class="bottom-container-area">
+            <small class="text-muted">Credits: <a href="mailto:mario@pythonslack.com">mario@pythonslack.com</a></small>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../static/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="../static/assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="static/js/chart.js"></script>
+    <script src="static/js/data.js"></script>
+</body>
+</html>

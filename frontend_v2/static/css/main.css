@@ -1,0 +1,25 @@
+body { 
+    background-color: #fff7f7;
+}
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.2fr [Grid] 1.9fr 0.9fr;
+    gap: 1px 1px;
+    grid-template-areas:
+      "Upper-area"
+      "Middle-area"
+      "Lower-area";
+  }
+  
+  .Upper-area { grid-area: Upper-area; 
+                border-bottom-style: solid;
+                border-bottom-color: #204969;
+}
+  
+  .Middle-area { grid-area: Middle-area; 
+                border-bottom-style: solid;
+                border-bottom-color: #204969;
+}
+  
+  .Lower-area { grid-area: Lower-area; }
